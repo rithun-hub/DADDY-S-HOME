@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DADDY'S HOME - Luxury Architecture & Design</title>
+  <!-- Google Fonts for premium typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-logo">DADDY'S HOME</div>
+  </div>
+
+  <!-- Floating Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="logo">DADDY'S HOME</div>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#explore">Explore</a>
+      <a href="#customization">Customize</a>
+      <a href="#3d-showcase">3D Experience</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-icon">💡</button>
+      <button id="sound-toggle" class="btn-icon">🔈</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">DADDY'S HOME</h1>
+      <p class="hero-tagline">Transforming Houses Into Timeless Luxury</p>
+    </div>
+    <div class="scroll-indicator">Scroll to Explore</div>
+  </section>
+
+  <!-- Main Exploration Section -->
+  <section id="explore" class="explore-section">
+    <h2 class="section-title">What Would You Like To Explore?</h2>
+    <div class="explore-cards">
+      <div class="explore-card" data-target="interior">
+        <div class="card-image bg-interior"></div>
+        <div class="card-content">
+          <h3>Interior Design</h3>
+        </div>
+      </div>
+      <div class="explore-card" data-target="exterior">
+        <div class="card-image bg-exterior"></div>
+        <div class="card-content">
+          <h3>Exterior Design</h3>
+        </div>
+      </div>
+      <div class="explore-card" data-target="garden">
+        <div class="card-image bg-garden"></div>
+        <div class="card-content">
+          <h3>Garden Design</h3>
+        </div>
+      </div>
+      <div class="explore-card" data-target="everything">
+        <div class="card-image bg-everything"></div>
+        <div class="card-content">
+          <h3>Explore Everything</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Details Modal/Section -->
+  <section id="category-details" class="category-details hidden">
+    <button class="btn-close-category" id="btn-close-category">✕ Close</button>
+    <h2 id="category-title" class="section-title">Category</h2>
+    <div id="category-content" class="category-grid"></div>
+  </section>
+
+  <!-- Customization Feature -->
+  <section id="customization" class="customization-section">
+    <h2 class="section-title">Customize Your Dream Home</h2>
+    <div class="customization-container glass-panel">
+      <div class="upload-area" id="drop-zone">
+        <div class="upload-icon">📁</div>
+        <p>Drag & Drop your house image here</p>
+        <input type="file" id="file-upload" accept="image/*" hidden />
+        <button class="btn-primary" onclick="document.getElementById('file-upload').click()">Upload Image</button>
+      </div>
+
+      <div class="ai-mockup hidden" id="ai-mockup">
+        <div class="mockup-view">
+          <div class="mockup-img original" id="mockup-original">
+            <span>Original</span>
+          </div>
+          <div class="mockup-img generated" id="mockup-generated">
+            <div class="scan-line"></div>
+            <span>AI Concept</span>
+          </div>
+        </div>
+        <div class="mockup-controls">
+          <button class="btn-outline active">Interior</button>
+          <button class="btn-outline">Exterior</button>
+          <button class="btn-outline">Garden</button>
+          <button class="btn-primary">Apply Design</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D Visualization Section -->
+  <section id="3d-showcase" class="three-showcase">
+    <h2 class="section-title">3D Home Experience</h2>
+    <div class="three-container-wrapper glass-panel">
+      <div id="three-container" class="three-container"></div>
+      <div class="three-controls">
+        <button class="btn-outline" id="rotate-btn">Toggle Auto-Rotate</button>
+        <p class="hint">Drag to rotate • Scroll to zoom</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Gallery -->
+  <section id="gallery" class="gallery-section">
+    <h2 class="section-title">Luxury Portfolio</h2>
+    <div class="gallery-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="interior">Interior</button>
+      <button class="filter-btn" data-filter="exterior">Exterior</button>
+      <button class="filter-btn" data-filter="garden">Garden</button>
+    </div>
+    <div class="masonry-grid" id="masonry-grid">
+      <!-- Populated via JS -->
+    </div>
+  </section>
+
+  <!-- Customer Experience Section -->
+  <section id="experience" class="experience-section">
+    <div class="stats-container">
+      <div class="stat"><span class="counter" data-target="150">0</span><span class="plus">+</span>
+        <div class="stat-label">Luxury Projects</div>
+      </div>
+      <div class="stat"><span class="counter" data-target="50">0</span><span class="plus">+</span>
+        <div class="stat-label">Design Awards</div>
+      </div>
+      <div class="stat"><span class="counter" data-target="100">0</span><span class="plus">%</span>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+    <div class="testimonials glass-panel">
+      <p class="testimonial-text">"DADDY'S HOME transformed our villa into a masterpiece. The attention to detail and
+        luxury finishes are unparalleled."</p>
+      <span class="testimonial-author">- Rithun Sakthivel</span>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-container">
+      <form class="contact-form glass-panel">
+        <div class="input-group">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+        </div>
+        <textarea placeholder="Tell us about your dream home..." required rows="5"></textarea>
+        <button type="submit" class="btn-primary w-100">Send Message</button>
+      </form>
+      <div class="contact-info glass-panel">
+        <h3>Contact Details</h3>
+        <p>📞 +91 9944895170</p>
+        <p>✉️ luxury@daddyshome.com</p>
+        <p>📍 COIMBATORE</p>
+        <button class="btn-whatsapp">WhatsApp Us</button>
+        <div class="social-links">
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 DADDY'S HOME. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
